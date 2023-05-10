@@ -8,7 +8,7 @@ import colorama
 from colorama import Fore, Style
 
 
-path_of_excel = '../INVENTORY 2023.APRIL.xlsx'
+path_of_excel = '../INVENTORY 2023.MAY.xlsx'
 
 
 def printColor(color, string):

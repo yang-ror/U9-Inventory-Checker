@@ -65,7 +65,7 @@ def select_a_tab(path_of_excel_file):
         printColor(color, f'{i} - {ws}')
     
     selected_index = -1
-    while selected_index < 0 or selected_index > len(ws):
+    while selected_index < 0 or selected_index > len(ws_list):
         selected_index = get_input_and_validate()
     
     return ws_list[selected_index]
