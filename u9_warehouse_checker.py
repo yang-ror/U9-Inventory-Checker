@@ -8,7 +8,7 @@ import colorama
 from colorama import Fore, Style
 
 
-path_of_excel = '../INVENTORY 2023.MAY.xlsx'
+# path_of_excel = '../INVENTORY 2023.MAY.xlsx'
 
 
 def printColor(color, string):
@@ -80,6 +80,8 @@ def check_warehouse(excel_tabs, u9_warehouse_num):
 
 
 def read_excel(tab, items):
+    filename = read_first_line('./Inventory file name.txt')
+    path_of_excel = f'../{filename}.xlsx'
     wb = openpyxl.load_workbook(filename=path_of_excel, read_only=True, data_only=True)
     ws = wb[tab]
     
@@ -129,6 +131,12 @@ def read_excel(tab, items):
             items[item_id]['excel_qty'] = excel_qty
     
     return items
+
+
+def read_first_line(file_path):
+    with open(file_path, 'r') as file:
+        first_line = file.readline().strip()
+    return first_line
         
 
 def read_u9(u9_warehouse_num, items):

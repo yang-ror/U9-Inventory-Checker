@@ -24,7 +24,8 @@ def printColor(color, string):
 
 def main():
     colorama.init()
-    path_of_excel_file = '../PACKING  - 2023-U9.xlsx'
+    filename = read_first_line('./packing file name.txt')
+    path_of_excel_file = f'../{filename}.xlsx'
     
     tab = select_a_tab(path_of_excel_file)
     
@@ -35,6 +36,12 @@ def main():
     
     print("Press any key to continue...")
     input()
+
+
+def read_first_line(file_path):
+    with open(file_path, 'r') as file:
+        first_line = file.readline().strip()
+    return first_line
 
 
 def select_a_tab(path_of_excel_file):
@@ -274,7 +281,7 @@ def show_result(items):
         e = value.get("excel_qty", 0)
         u = value.get("u9_qty", 0)
         # print(key + Fore.RED + f' -> Excel: {e} U9: {u}' + Style.RESET_ALL)
-        output_table.append([key, f'Excel: {e}', f'U9: {u}', f'Diff: {round(abs(e - u),3)}'])
+        output_table.append([key, f'Excel: {e}', f'U9: {u}', f'Diff: {round(e - u, 3)}'])
         
     print('\nFound the following unmatched numbers:')
     print(tabulate(output_table))
