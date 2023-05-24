@@ -201,12 +201,18 @@ def preprocess_items(items):
         
         if 'excel_qty' in value and 'u9_qty' not in value:
             if parent_key not in new_items: continue
-            new_items[parent_key]['excel_qty'] += items[key]['excel_qty']
+            if 'excel_qty' not in new_items[parent_key]:
+                new_items[parent_key]['excel_qty'] = items[key]['excel_qty']
+            else:
+                new_items[parent_key]['excel_qty'] += items[key]['excel_qty']
             del new_items[key]
         
         if 'excel_qty' not in value and 'u9_qty' in value:
             if parent_key not in new_items: continue
-            new_items[parent_key]['u9_qty'] += items[key]['u9_qty']
+            if 'u9_qty' not in new_items[parent_key]:
+                new_items[parent_key]['u9_qty'] = items[key]['u9_qty']
+            else:
+                new_items[parent_key]['u9_qty'] += items[key]['u9_qty']
             del new_items[key]
     
     return new_items
