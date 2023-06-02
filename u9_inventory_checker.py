@@ -25,6 +25,8 @@ def printColor(color, string):
 def main():
     colorama.init()
     filename = read_first_line('./packing file name.txt')
+    if filename.endswith(".xlsx"):
+        filename = filename.removesuffix(".xlsx")
     path_of_excel_file = f'../{filename}.xlsx'
     
     tab = select_a_tab(path_of_excel_file)

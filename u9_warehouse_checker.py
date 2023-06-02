@@ -81,6 +81,8 @@ def check_warehouse(excel_tabs, u9_warehouse_num):
 
 def read_excel(tab, items):
     filename = read_first_line('./Inventory file name.txt')
+    if filename.endswith(".xlsx"):
+        filename = filename.removesuffix(".xlsx")
     path_of_excel = f'../{filename}.xlsx'
     wb = openpyxl.load_workbook(filename=path_of_excel, read_only=True, data_only=True)
     ws = wb[tab]
